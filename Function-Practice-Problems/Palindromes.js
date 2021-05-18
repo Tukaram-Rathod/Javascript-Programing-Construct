@@ -1,0 +1,19 @@
+function palindrome()
+{
+    const prompt = require('prompt-sync')();
+    let num = prompt('Enter Number: ')
+    let temp = num;
+    let rem = 0;
+    let rev = 0;
+    while(temp >= 0)
+    {
+         rem = temp % 10;
+         rev = (rev * 10) + rem;
+         temp = temp/10;
+    }
+    if(rev == num)
+    console.log(" Palindrome Number");
+    else
+    console.log(" Not Palindrome Number");
+}
+palindrome();
