@@ -1,32 +1,42 @@
-function primePalindrome()
-{
-    const prompt = require('prompt-sync')();
-    let num = prompt('enter the number')
-    let temp = num;
-    let rem = 0;
-    let rev = 0;
-    while(temp >= 0)
-    {
-         rem = temp % 10;
-         rev = (rev * 10) + rem;
-         temp = temp/10;
-    }
-    if(rev == num)
-    console.log("its palindrome number");
-    else
-    console.log("its not a palindrome number");
-    if(rev == num)
-    {
-        let count = 2;
-        for(let i = 2; i < num; i++)
-        {
-            if(num % i == 0)
-            count++;
-        }
-        if(count == 2)
-        console.log("it is prime number");
-        else
-        console.log("it is not prime number");
-    }
+// Checking Whether given number is Prime and Palindrome or not
+const prompt = require('prompt-sync')({sigint:true});
+let num = prompt("Enter a number: ");
+
+num = Number(num);
+
+if (PalindromeCheck(num)) {
+	if (PrimeCheck(num)) {
+		console.log("the Number is Palindrom and Prime")
+	} else
+		console.log("the Number is Palindrom but Not a Prime")
+} else {
+    console.log("the Number is not Palindrome")
 }
-primePalindrome();
+// Function to check whether given number is prime or not
+function PrimeCheck(num) {
+	let isPrime = true;
+	let number = num;
+		for (let i = 2; i < number; i++) {
+			if (number % i == 0) {
+				isPrime = false;
+				break;
+			}
+		}
+	return isPrime;
+}
+// Function to check whether given number is palindrome or not
+function PalindromeCheck(num) {
+	let isPalindrome = true;
+	let number = num;
+	let rem, temp, final = 0;
+	temp = num;
+	while (number > 0) {
+		rem = number % 10;
+		final = final * 10 + rem;
+		number = parseInt(number / 10);
+	}
+	if (final != temp) {
+		isPalindrome = false;
+	}
+	return isPalindrome;
+}
